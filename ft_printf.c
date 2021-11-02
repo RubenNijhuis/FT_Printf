@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rubennijhuis@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:05:20 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 16:39:12 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2021/11/02 16:54:29 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int check_type(va_list args, const char *str)
         return (ft_putchar((char)p));
     else if (*str == '%')
         return (ft_putchar('%'));
+    else if (*str == 's')
+        return (ft_putstr(s));
     else if (*str == 'i' || *str == 'd')
         return (ft_putnbr(p));
     return (0);

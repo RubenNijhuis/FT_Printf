@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:05:57 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 16:24:41 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2021/11/02 16:56:52 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	float num_f;
 	// unsigned long int uli;
 	string = "a string";
-	num_i = 42;
+	num_i = 123456789;
 	num_f = -42;
 	// uli = 4.2424242;
 
