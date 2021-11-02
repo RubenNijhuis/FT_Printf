@@ -1,5 +1,5 @@
 NAME = ft_printf.a
-SRC = ft_printf.c ft_putchar.c
+SRC = ft_printf.c ft_putchar.c ft_check_type.c
 OFILES = $(SRC:.c=.o)
 CC = gcc -c
 CFLAGS = -Wall -Wextra -Werror

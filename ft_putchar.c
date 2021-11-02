@@ -6,14 +6,14 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:06:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/10/28 13:06:00 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2021/11/01 16:30:31 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char s, int *strlen)
+int	ft_putchar(char s)
 {
     write(1, &s, 1);
-    *strlen++;
+    return (1);
 }
