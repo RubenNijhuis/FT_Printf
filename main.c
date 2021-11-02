@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:05:57 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/10/28 13:44:26 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2021/11/02 16:24:41 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@
 int	main(void)
 {
 	char	*string;
-	char	letter;
 	// void *ptr;
 	int num_i;
 	float num_f;
 	// unsigned long int uli;
-	string = "string";
+	string = "a string";
 	num_i = 42;
-	num_f = -4.2424242;
-	letter = 'a';
+	num_f = -42;
 	// uli = 4.2424242;
 
 	// ft_printf("Char: %c\n", letter);
@@ -32,10 +30,10 @@ int	main(void)
 
 	// ft_printf("\n");
 
-	// ft_printf("String: %s\n", string);
-	// printf("String: %s\n", string);
+	ft_printf("String: %s %i\n", string, num_i);
+    printf("String: %s %i\n", string, num_i);
 
-	// ft_printf("\n");
+    // ft_printf("\n");
 
 	// ft_printf("Void pointer in hex: %p\n", ptr);
 	// printf("Void pointer in hex: %p\n", ptr);
@@ -68,8 +66,8 @@ int	main(void)
 
 	// ft_printf("\n");
 
-	ft_printf("Nothing: String one is simple and only has a newline\n");
-	printf("Nothing: String one is simple and only has a newline\n");
+	// ft_printf("Nothing: String one is simple and only has a newline\n");
+	// printf("Nothing: String one is simple and only has a newline\n");
 
 	// ft_printf("\n");
 

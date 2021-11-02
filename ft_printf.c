@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rubennijhuis@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:05:20 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 16:25:04 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2021/11/02 16:39:12 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int check_type(va_list args, const char *str)
 }
 
 int	ft_printf(const char *str, ...)
-{
+{ 
 	int		strlen;
 	int		strpos;
 	va_list	args;
