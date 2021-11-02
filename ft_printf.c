@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rubennijhuis@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 13:05:20 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 14:41:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2021/11/02 15:04:20 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 static int check_type(va_list args, const char *str, int i)
 {
-    if (str[i] == 'c' || str[i] == 'u' || str[i] == 'i' || \
-    str[i] == 'd' || str[i] == 'x' || str[i] == 'X')
+    int p;
+    char *s;
+    
+    if (str[i] == 'c' || str[i] == 'u' || str[i] == 'i' ||
+        str[i] == 'd' || str[i] == 'x' || str[i] == 'X')
         p = va_arg(args, int);
     if (str[i] == 's' || str[i] == 'p')
         s = va_arg(args, char *);
