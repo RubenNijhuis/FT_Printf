@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/28 13:05:57 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 16:56:52 by rubennijhui   ########   odam.nl         */
+/*   Created: 2021/11/03 12:37:56 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/08 14:09:45 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,63 +16,16 @@
 int	main(void)
 {
 	char	*string;
+	int		num_i;
+	float	num_f;
+	char	ch;
+
+	ch = 'c';
 	// void *ptr;
-	int num_i;
-	float num_f;
-	// unsigned long int uli;
 	string = "a string";
 	num_i = 123456789;
 	num_f = -42;
-	// uli = 4.2424242;
-
-	// ft_printf("Char: %c\n", letter);
-	// printf("Char: %c\n", letter);
-
-	// ft_printf("\n");
-
-	ft_printf("String: %s %i\n", string, num_i);
-    printf("String: %s %i\n", string, num_i);
-
-    // ft_printf("\n");
-
-	// ft_printf("Void pointer in hex: %p\n", ptr);
-	// printf("Void pointer in hex: %p\n", ptr);
-
-	// ft_printf("\n");
-
-
-	// ft_printf("Number dec:  %d\n", num_f);
-	// printf("Number dec:  %d\n", num_f);
-
-	// ft_printf("\n");
-
-	// ft_printf("Number int:  %i\n", num_i);
-	// printf("Number int:  %i\n", num_i);
-
-	// ft_printf("\n");
-
-	// ft_printf("Number unsigned dec:  %u\n", uli);
-	// printf("Number unsinged dec:  %u\n", uli);
-
-	// ft_printf("\n");
-
-	// ft_printf("Number unsigned dec in hex:  %x\n", num_i);
-	// printf("Number unsinged dec in hex:  %x\n", num_i);
-
-	// ft_printf("\n");
-
-	// ft_printf("Number unsigned dec:  %X\n", num_i);
-	// printf("Number unsinged dec:  %X\n", num_i);
-
-	// ft_printf("\n");
-
-	// ft_printf("Nothing: String one is simple and only has a newline\n");
-	// printf("Nothing: String one is simple and only has a newline\n");
-
-	// ft_printf("\n");
-
-	// ft_printf("Percent: %%\n");
-	// printf("Percent: %%\n");
-
+	ft_printf("%i\n" ,ft_printf("String: %s %i %c %x %X\n", string, num_i, ch, num_i, num_i));
+	printf("%i\n" ,printf("String: %s %i %c %x %X\n", string, num_i, ch, num_i, num_i));
 	return (0);
 }

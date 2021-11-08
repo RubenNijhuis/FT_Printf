@@ -3,58 +3,59 @@
 /*                                                        ::::::::            */
 /*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rnijhuis <rubennijhuis@student.codam.nl      +#+                     */
+/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/28 13:05:20 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 16:54:29 by rubennijhui   ########   odam.nl         */
+/*   Created: 2021/11/03 12:38:33 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/08 15:37:10 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int check_type(va_list args, const char *str)
+int	check_type(va_list args, const char *str)
 {
-    int p;
-    char *s;
-
-    if (*str == 'c' || *str == 'u' || *str == 'i' || *str == 'd' || *str == 'x' || *str == 'X')
-        p = va_arg(args, int);
-    else if (*str == 's' || *str == 'p')
-        s = va_arg(args, char *);
-
-    if (*str == 'c')
-        return (ft_putchar((char)p));
-    else if (*str == '%')
-        return (ft_putchar('%'));
-    else if (*str == 's')
-        return (ft_putstr(s));
-    else if (*str == 'i' || *str == 'd')
-        return (ft_putnbr(p));
-    return (0);
+	if (*str == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	else if (*str == '%')
+		return (ft_putchar('%'));
+	else if (*str == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	else if (*str == 'i' || *str == 'd')
+		return (ft_putnbr(va_arg(args, int)));
+	else if (*str == 'x')
+		return (ft_num_to_hex_low(va_arg(args, long)));
+	else if (*str == 'X')
+		return (ft_num_to_hex_up(va_arg(args, long)));
+	else if (*str == 'u')
+		return (ft_putnbr_unsigned(va_arg(args, unsigned int)));
+	else if (*str == 'p')
+		return (ft_num_to_hex_low(va_arg(args, long)));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
-{ 
+{
 	int		strlen;
 	int		strpos;
 	va_list	args;
 
-    strlen = 0;
-    strpos = 0;
-    va_start(args, str);
-    while (str[strpos] != '\0')
-    {
-        if (str[strpos] == '%')
-        {
-            strlen += check_type(args, &str[strpos + 1]);
-            strpos++;
-        }
-        else
-            ft_putchar(str[strpos]);
-        strlen++;
-        strpos++;
-    }
-    va_end(args);
-    return (strlen);
+	strlen = 0;
+	strpos = 0;
+	va_start(args, str);
+	while (str[strpos] != '\0')
+	{
+		if (str[strpos] == '%')
+		{
+			strlen += check_type(args, &str[strpos + 1]);
+			strpos++;
+		}
+		else
+		{
+			strlen += ft_putchar(str[strpos]);
+			strpos++;
+		}
+	}
+	va_end(args);
+	return (strlen);
 }

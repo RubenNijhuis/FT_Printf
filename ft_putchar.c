@@ -3,17 +3,17 @@
 /*                                                        ::::::::            */
 /*   ft_putchar.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/10/28 13:06:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2021/11/02 15:07:58 by rubennijhui   ########   odam.nl         */
+/*   Created: 2021/11/03 12:38:20 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/08 13:56:54 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char s)
+int	ft_putchar(int s)
 {
-    write(1, &s, 1);
-    return (1);
+	write(1, &s, 1);
+	return (1);
 }

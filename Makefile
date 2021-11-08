@@ -1,25 +1,51 @@
-NAME = ft_printf.a
-SRC = ft_printf.c ft_putchar.c ft_check_type.c
-OFILES = $(SRC:.c=.o)
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: rnijhuis <rnijhuis@student.codam.nl>         +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/11/08 13:03:58 by rnijhuis      #+#    #+#                  #
+#    Updated: 2021/11/08 14:43:18 by rnijhuis      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS =  ft_putchar.c \
+		ft_num_to_hex.c \
+		ft_printf.c \
+		ft_putnbr.c \
+		ft_putnbr_unsigned.c \
+		ft_putstr.c \
+		ft_pointer_to_hex.c
+
+NAME = libftprintf.a
+
+OBJS = $(SRCS:.c=.o)
+
+OBJS_B = $(SRCS_B:.c=.o)
+
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-COMPILER = $(CC) $(CFLAGS)
 
-all:
-	$(COMPILER) *.c
-	a.out
+FLAGS = -Wall -Werror -Wextra
 
-$(NAME): $(OFILES)
-	ar rc $(NAME) $(OFILES)
+all: $(NAME)
 
-%.o: %.c
-	$(COMPILER) $? -o $@
+%.o : %.c ft_printf.h
+	@$(CC) $(FLAGS) -c $<
+	@echo "🔨 Compiling: $<"
 
+$(NAME): $(OBJS)
+	@ar -cr $(NAME) $(OBJS)
+
+clean:
+	@rm -f $(OBJS) $(OBJS_B)
+	@echo "🧹  Done cleaning objects"
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo "🧹  Done cleaning archive"
 
 re: fclean all
 
-clean:
-	rm -f $(OFILES)
-
-fclean: clean
-	rm -f $(NAME)
+# bonus: $(OBJS_B)
+# 	@ar -cr $(NAME) $(OBJS_B)
