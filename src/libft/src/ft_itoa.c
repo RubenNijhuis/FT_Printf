@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_itoa.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:44:02 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:44:02 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+char	*ft_itoa(int n)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	int		len;
+	char	*str;
+	long	nb;
 
-	len = 0;
+	len = ft_nbrlen(n);
 	nb = n;
-	if (nb >= 10)
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	if (nb < 0)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		str[0] = '-';
+		nb = -nb;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	if (nb == 0)
+		str[0] = '0';
+	str[len] = '\0';
+	len--;
+	while (nb)
+	{
+		str[len] = nb % 10 + '0';
+		len--;
+		nb = nb / 10;
+	}
+	return (str);
 }

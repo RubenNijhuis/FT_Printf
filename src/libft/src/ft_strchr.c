@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:45:21 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:45:21 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+char	*ft_strchr(const char *s, int c)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	unsigned int	i;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	i = 0;
+	while (s[i] != 0)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	if (s[i] == (char)c)
+		return ((char *)s + i);
+	return (0);
 }

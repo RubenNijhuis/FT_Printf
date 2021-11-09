@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:45:48 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:45:48 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	char			*string;
+	unsigned int	i;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	i = 0;
+	if (s == NULL || f == NULL)
+		return (NULL);
+	string = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	while (s[i] != 0)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		string[i] = f(i, s[i]);
+		i++;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	string[i] = 0;
+	return (string);
 }

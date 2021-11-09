@@ -6,65 +6,32 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/08 14:12:22 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2021/11/09 13:13:34 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 
-static size_t	nb_len(int nb)
+int	ft_putnbr(long n)
 {
-	int	len;
+	char		s;
+	long		nb;
+	int			len;
 
 	len = 0;
-	if (nb <= 0)
-		len++;
-	while (nb)
-	{
-		len++;
-		nb = nb / 10;
-	}
-	return (len);
-}
-
-static	char	*create_string(int len, int nb)
-{
-	char	*str;
-
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (0);
+	nb = n;
 	if (nb < 0)
 	{
-		str[0] = '-';
-		nb = -nb;
+		len += ft_putchar('-');
+		nb *= -1;
 	}
-	if (nb == 0)
-		str[0] = '0';
-	str[len] = '\0';
-	len--;
-	while (nb)
+	if (nb >= 10)
 	{
-		str[len] = nb % 10 + '0';
-		len--;
-		nb = nb / 10;
+		len += ft_putnbr(nb / 10);
+		s = nb % 10 + '0';
+		len += ft_putchar(s);
 	}
-	return (str);
-}
-
-int	ft_putnbr(int n)
-{
-	int		len;
-	long	nb;
-	char	*str;
-
-	len = nb_len(n);
-	nb = n;
-	str = create_string(len, nb);
-	if (!str)
-		return (0);
-	ft_putstr(str);
-	free(str);
+	if (nb < 10)
+		len += ft_putchar(nb % 10 + '0');
 	return (len);
 }

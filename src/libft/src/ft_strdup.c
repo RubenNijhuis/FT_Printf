@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:37:56 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/08 14:09:45 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:45:24 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:45:25 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
-{
+char	*ft_strdup(const char *s1)
+{	
 	char	*string;
-	int		num_i;
-	float	num_f;
-	char	ch;
 
-	ch = 'c';
-	// void *ptr;
-	string = "a string";
-	num_i = 123456789;
-	num_f = -42;
-	ft_printf("%i\n" ,ft_printf("String: %s %i %c %x %X\n", string, num_i, ch, num_i, num_i));
-	printf("%i\n" ,printf("String: %s %i %c %x %X\n", string, num_i, ch, num_i, num_i));
-	return (0);
+	string = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	ft_strlcpy(string, s1, ft_strlen(s1) + 1);
+	return (string);
 }

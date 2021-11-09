@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_lstadd_back.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:44:06 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:44:06 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
-
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	if (!lst || !new)
+		return ;
+	if (!*lst)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		*lst = new;
+		return ;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	ft_lstlast(*lst)->next = new;
 }

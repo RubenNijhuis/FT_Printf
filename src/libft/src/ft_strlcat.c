@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:45:35 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:45:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	offset;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize <= dst_len)
+		return (src_len + dstsize);
+	offset = dst_len;
+	while (*src && dstsize - offset - 1 > 0)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		dst[offset] = *src;
+		++offset;
+		++src;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	dst[offset] = '\0';
+	return (src_len + dst_len);
 }

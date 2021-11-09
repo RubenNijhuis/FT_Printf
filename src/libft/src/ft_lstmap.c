@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_lstmap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:44:38 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:44:39 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	t_list	*copy_list;
+	t_list	*mapped_block;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	copy_list = NULL;
+	while (lst != NULL && f != NULL)
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		mapped_block = ft_lstnew(f(lst->content));
+		if (mapped_block == NULL)
+		{
+			ft_lstclear(&copy_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&copy_list, mapped_block);
+		lst = lst->next;
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	return (copy_list);
 }

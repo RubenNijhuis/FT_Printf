@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_lstnew.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:44:41 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:44:41 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+t_list	*ft_lstnew(void *content)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	struct s_list	*block;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
-	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
-	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	block = (t_list *) malloc(sizeof(*block));
+	if (block == NULL)
+		return (NULL);
+	block->content = content;
+	block->next = NULL;
+	return (block);
 }

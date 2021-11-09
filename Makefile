@@ -6,7 +6,7 @@
 #    By: rnijhuis <rnijhuis@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/08 13:03:58 by rnijhuis      #+#    #+#                  #
-#    Updated: 2021/11/08 14:43:18 by rnijhuis      ########   odam.nl          #
+#    Updated: 2021/11/09 13:27:02 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ SRCS =  ft_putchar.c \
 		ft_putnbr.c \
 		ft_putnbr_unsigned.c \
 		ft_putstr.c \
-		ft_pointer_to_hex.c
 
 NAME = libftprintf.a
 
@@ -46,6 +45,3 @@ fclean: clean
 	@echo "🧹  Done cleaning archive"
 
 re: fclean all
-
-# bonus: $(OBJS_B)
-# 	@ar -cr $(NAME) $(OBJS_B)

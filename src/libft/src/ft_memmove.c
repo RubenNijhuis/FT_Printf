@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:44:57 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:44:57 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+void	*ft_memmove(void *dest, void *src, size_t len)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	char	*d;
+	char	*s;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
+	d = dest;
+	s = src;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	if (d < s)
+		ft_memcpy(d, s, len);
+	else
 	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
+		s = src + (len - 1);
+		d = dest + (len - 1);
+		while (len > 0)
+		{
+			*d = *s;
+			d--;
+			s--;
+			len--;
+		}
 	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	return (dest);
 }

@@ -6,17 +6,17 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/08 10:53:07 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/08 11:48:48 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2021/11/09 12:23:12 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_num_to_hex_low(unsigned long int n)
+int	ft_num_to_hex_low(unsigned long n)
 {
-	char				c;
-	unsigned long int	nbr;
-	int					total;
+	char			c;
+	unsigned long	nbr;
+	int				total;
 
 	nbr = n;
 	total = 0;
@@ -40,7 +40,7 @@ int	ft_num_to_hex_low(unsigned long int n)
 	return (total);
 }
 
-int	ft_num_to_hex_up(unsigned long int n)
+int	ft_num_to_hex_up(unsigned long n)
 {
 	char				c;
 	unsigned long int	nbr;

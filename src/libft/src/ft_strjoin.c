@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putnbr_unsigned.c                               :+:    :+:            */
+/*   ft_strjoin.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:25:33 by rnijhuis      ########   odam.nl         */
+/*   Created: 2021/11/09 09:45:31 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2021/11/09 09:45:31 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			s;
-	unsigned long	nb;
-	int				len;
+	char	*string;
+	size_t	strlen1;
+	size_t	strlen2;
 
-	len = 0;
-	nb = n;
-	if (nb >= 10)
-	{
-		len += ft_putnbr_unsigned(nb / 10);
-		s = nb % 10 + '0';
-		len += ft_putchar(s);
-	}
-	if (nb < 10)
-		len += ft_putchar(nb % 10 + '0');
-	return (len);
+	if (!s1 || !s2)
+		return (NULL);
+	strlen1 = ft_strlen(s1);
+	strlen2 = ft_strlen(s2);
+	string = malloc((strlen1 + strlen2 + 1) * sizeof(char));
+	if (string == NULL)
+		return (NULL);
+	ft_strlcpy(string, s1, strlen1 + 1);
+	ft_strlcpy(string + strlen1, s2, strlen2 + 1);
+	return (string);
 }
