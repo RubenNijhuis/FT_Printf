@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 12:38:09 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2021/11/09 13:13:34 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2021/11/09 13:43:27 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_putnbr(long n)
 {
-	char		s;
-	long		nb;
-	int			len;
+	char	s;
+	long	nb;
+	int		len;
 
 	len = 0;
 	nb = n;
