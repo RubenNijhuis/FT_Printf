@@ -3,45 +3,69 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: rnijhuis <rnijhuis@student.codam.nl>         +#+                      #
+#    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
-#    Created: 2021/11/08 13:03:58 by rnijhuis      #+#    #+#                  #
-#    Updated: 2021/11/09 13:27:02 by rnijhuis      ########   odam.nl          #
+#    Created: 2022/03/13 16:51:02 by rubennijhui   #+#    #+#                  #
+#    Updated: 2022/03/13 17:01:25 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  ft_putchar.c \
-		ft_num_to_hex.c \
-		ft_printf.c \
+#=====================================#
+#========= General variables =========#
+#=====================================#
+
+NAME := ft_printf
+INCLUDE_DIR := include
+SRC_DIR := src
+OBJS_DIR := objs
+OUTPUT := $(NAME).a
+
+#=====================================#
+#============ Input files ============#
+#=====================================#
+
+INC := -I $(INCLUDE_DIR)
+
+SRCS := ft_putstr.c \
 		ft_putnbr.c \
+		ft_putchar.c \
+		ft_printf.c \
 		ft_putnbr_unsigned.c \
-		ft_putstr.c \
+		ft_num_to_hex.c \
 
-NAME = libftprintf.a
+OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
-OBJS = $(SRCS:.c=.o)
-
-OBJS_B = $(SRCS_B:.c=.o)
+#=====================================#
+#========= Command arguments =========#
+#=====================================#
 
 CC = gcc
+CFLAGS = -Wall -Werror -Wextra -g $(INC)
+LDFLAGS =
 
-FLAGS = -Wall -Werror -Wextra
+#=====================================#
+#=============== Rules ===============#
+#=====================================#
 
+objs/%.o:src/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) -c $(CFLAGS) -o $@ $^
+	@echo "🔨 Compiling: $^"
+	
 all: $(NAME)
 
-%.o : %.c ft_printf.h
-	@$(CC) $(FLAGS) -c $<
-	@echo "🔨 Compiling: $<"
-
 $(NAME): $(OBJS)
-	@ar -cr $(NAME) $(OBJS)
+	@ar -cr $(OUTPUT) $(OBJS)
+	@echo "✅ Built $(NAME)"
 
 clean:
-	@rm -f $(OBJS) $(OBJS_B)
-	@echo "🧹  Done cleaning objects"
+	@rm -rf $(OBJS_DIR)
+	@echo "🧹 Done cleaning objects"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "🧹  Done cleaning archive"
+	@rm -f $(OUTPUT)
+	@echo "🧹 Done cleaning archive"
 
 re: fclean all
+
+.PHONY: all re clean fclean
